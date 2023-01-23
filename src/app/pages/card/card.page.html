@@ -1,0 +1,20 @@
+<!-- Header -->
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>Card</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Content -->
+<ion-content>
+
+  <!-- Card donde mostraremos el QR generado -->
+  <ion-card>
+    <ion-card-content class="ion-text-center">
+      <ngx-qrcode elementType="text" [value]="codeQR"></ngx-qrcode>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+

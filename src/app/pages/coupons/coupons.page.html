@@ -1,0 +1,55 @@
+<!-- Header -->
+<ion-header *ngIf="!showCamera">
+  <ion-toolbar>
+    <ion-title>Coupons</ion-title>
+    
+    <!-- Inicio la camara -->
+    <ion-item lines="none" slot="end" (click)="startCamera()">
+      <ion-icon name="camera-outline"></ion-icon>
+    </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+<!-- Content -->
+<ion-content *ngIf="!showCamera">
+
+  <!-- Cupones -->
+  <ion-card *ngFor="let coupon of coupons; let last = last" [ngClass]="{'margin-last': last}">
+    <!-- Imagen -->
+    <img [src]="coupon.img" alt="">
+    
+    <!-- Nombre -->
+    <ion-card-header>
+      <ion-card-title>{{coupon.name}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item lines="none">
+        <!-- Descuento -->
+        <ion-label>{{coupon.discount}} %</ion-label>
+        <!-- Indica si esta o no activo -->
+        <ion-button slot="end" (click)="coupon.active = !coupon.active">
+          {{coupon.active ? 'Desactivar' : 'Activar'}}
+        </ion-button>
+      </ion-item>
+    </ion-card-content>
+
+  </ion-card>
+
+  <!-- Boton flotante -->
+  <ion-fab horizontal="start" vertical="bottom" slot="fixed" (click)="goToCard()">
+    <ion-fab-button>
+      <ion-icon name="card-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>
+
+<!-- Boton flotante para cerrar la camara -->
+<ion-fab *ngIf="showCamera" horizontal="start" vertical="bottom" slot="fixed" (click)="closeCamera()">
+  <ion-fab-button>
+    <ion-icon name="close-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
